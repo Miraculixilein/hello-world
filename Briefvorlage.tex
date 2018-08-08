@@ -1,0 +1,58 @@
+\documentclass[fontsize=11pt]{scrlttr2}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
+\usepackage{helvet}
+\usepackage{marvosym}
+\usepackage{blindtext}
+\renewcommand\familydefault{\sfdefault}
+
+\LoadLetterOption{DINmtext}
+\KOMAoptions{paper=a4,backaddress=plain,parskip=full,fromalign=right,frommobilephone=true,fromemail=true,locfield=wide} 
+\setkomavar*{enclseparator}{\textbf{Anlagen}\\}
+\setkomavar{enclseparator}{}
+\renewcommand*{\encl}[1]{\begingroup
+	\parbox[t]{\textwidth}{%
+		\ifkomavarempty*{enclseparator}{}{%
+			\strut\usekomavar*{enclseparator}\usekomavar{enclseparator}%
+		}%
+		\ignorespaces #1}%
+	\parfillskip\fill\par
+	\endgroup
+}
+\makeatletter
+\@setplength{toaddrhpos}{2.5cm}
+\makeatother
+\setlength{\textwidth}{16cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\textheight}{24.9cm}
+\let\raggedsignature=\raggedright	
+\addtokomafont{toname}{\sffamily}
+\addtokomafont{toaddress}{\large}
+\setkomavar{signature}{\\\usekomavar{fromname}}
+\setkomavar{location}{\usekomavar{fromname}\\\usekomavar{fromaddress}\\\\\usekomavar{frommobilephone}\\\usekomavar{fromemail}}
+\setkomavar{firsthead}{\small Betreffzeile\\\vspace{-11pt}\hrule}	% Betreffzeile, ggf. ausklammern
+\setkomavar{subject}{Betreff} 										% Betreff
+\setkomavar{fromname}{Käse}											% Name des Absenders
+\setkomavar{fromaddress}{Adresse1\\Adresse2} 						% Absendeadresse
+\setkomavar{frommobilephone}{\Telefon~Feletonnummer}				% Telefon
+\setkomavar{fromemail}{\Letter~Mail@mail.mail}						% Mailadresse	
+\setkomavar{place}{Heidelberg}										% Von wo geschrieben
+\setkomavar{toname}{\textbf{An Herrn/Frau} \\{\large Jemand}} 		% An wen
+\setkomavar{toaddress}{Irgendwo\\in einer Stadt}					% Nach wo (Adresse)
+ 
+\title{Briefvorlage} % Name des Briefes
+
+\begin{document}
+	
+\begin{letter}{}			
+	\opening{Anrede,}
+	
+	\blindtext \blindtext
+    
+    \closing{Mit greulichen Füßen,}
+	\vspace{-12pt}
+	\encl{Anhang\\noch ein Anhang}
+\end{letter}
+\end{document}
